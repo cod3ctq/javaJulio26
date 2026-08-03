@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -199,6 +201,129 @@ public class Main {
         for(Ciudad c:citys){
             System.out.println(c);
         }
+
+        //-------------------------------MAPAS---------------------------------------------------------------
+
+        System.out.println("\n////////////////////////////////////MAPAS/////////////////////////////////////////////");
+
+        Map<String,String> registro = new HashMap<String,String>();
+        Map<String,Equipo> equipos = new HashMap<String,Equipo>();
+
+        //Agregar elementos al mapa
+        System.out.println("\n=Agregar elementos al mapa=");
+        registro.put("24386018943","Alcatel OT557 Gris Telcel Prepago 800");
+        registro.put("09234859383","Samsung Omnia Negro Movistar Pospago 1600");
+        registro.put("84983972938","Sony Ericsson W995 Naranja Unefon Prepago 2000");
+        registro.put("02984379383","Kiocera K1 Rojo Telcel Pospago 1100");
+        registro.put("02938484622","Pantech GMV-S Gris Unefon Pospago 500");
+        registro.put("90438702849","Nokia 5800 Negro Telcel Prepago 2500");
+        registro.put("94852039483","Motorola Razr Azul Movistar Prepago 1500");
+        registro.put("03894373734","LG Chocolate Negro Movistar Prepago  1600");
+
+        equipos.put("876876188275",new Equipo("Nokia","N95 8GB", "Negro", "Telcel", "Prepago", 8000));
+        equipos.put("834590243984",new Equipo("Samsung","A05", "Azul", "Telcel", "Pospago", 2000));
+        equipos.put("012983472435",new Equipo("Motorola","Flip", "Rojo", "Telcel", "Prepago", 500));
+        equipos.put("289470292832",new Equipo("LG","G9", "Blanco", "Telcel", "Prepago", 3600));
+        equipos.put("092843298329",new Equipo("Sony Ericsson","W200", "Morado", "Telcel", "Prepago", 1800));
+        equipos.put("987249812736",new Equipo("Nokia","N96", "Negro", "Telcel", "Pospago", 9000));
+        equipos.put("219387492832",new Equipo("Huawei","P30", "Dorado", "Telcel", "Prepago", 7000));
+
+
+        //tamaño del mapa
+        System.out.println("\nElementos en el mapa: "+registro.size());
+
+        //Obtener un elemento del mapa
+        System.out.println("\n=Obtener un elemento del mapa=");
+        System.out.println(registro.get("84983972938"));
+        System.out.println(equipos.get("092843298329"));
+
+        //Imprimir los elementos del mapa
+        System.out.println("\n=Imprimir los elementos del mapa=");
+        for(String key:equipos.keySet()){
+            System.out.println(equipos.get(key));
+        }
+        //Eliminar elementos del mapa
+        System.out.println("\n=Eliminar elementos del mapa=");
+        System.out.println(registro.remove("94852039483"));//Recibe la llave
+        equipos.remove("219387492832"); //Elimina al Huawei
+        System.out.println(equipos.get("219387492832"));
+        //Recibe la llave y un valor asociado. Si dichallave está asociada al valor dado, elimina el elemento, si no
+        //no lo elimina.
+        registro.remove("02984379383","Kiocera K1 Rojo Telcel Pospago 110");
+        System.out.println("Elementos en el mapa: "+registro.size());
+
+        //¿Existe la llave?
+        System.out.println("\n=¿Existe la llave?=");
+        System.out.println(registro.containsKey("90438702849"));
+
+        //¿Existe el valor?
+        System.out.println("\n=¿Existe el valor?=");
+        System.out.println(registro.containsValue("LG Chocolate Negro Movistar Prepago  1600"));
+
+        //Si al intentar un nuevo valor con el método put, usas una llave que ya existe, no crea un nuevo registro,
+        //sobreescribe el valor asociado a la llave.
+        System.out.println("\n=Sobreescribiendo el valor a una llave existente con .put()=");
+        registro.put("90438702849","Nokia 808PV Blanco Telcel Prepago 8000");
+        System.out.println("Elementos en el mapa: "+registro.size());
+
+        //Antes de reemplazar
+        System.out.println("=Antes de reemplazar=");
+        System.out.println(registro.get("09234859383"));
+        //Reemplazar un valor, solo si la llave existe
+        System.out.println("=Reemplazar un valor, solo si la llave existe=");
+        registro.replace("09234859383","Nokia Lumia640XL Azul Pospago 4000");
+        //Después de reemplazar
+        System.out.println("=Después de reemplazar=");
+        System.out.println(registro.get("09234859383"));
+
+        //Para encontrar un valor específico en el mapa
+        String[] datos;
+        System.out.println("\n=Para encontrar un valor específico en el mapa=");
+        System.out.println("\n=Por Modalidad=");
+        for(String key:equipos.keySet()){
+            //datos = registro.get(key).split(""); //[Nokia, Lumia640XL, Azul, Pospago, 4000]
+
+            if(equipos.get(key).getModalidad().equals("Pospago")){
+                System.out.println(equipos.get(key));
+            }
+        }
+        System.out.println("\n=Por Compañía=");
+        for(String key:equipos.keySet()){
+            //datos = registro.get(key).split(""); //[Nokia, Lumia640XL, Azul, Pospago, 4000]
+
+            if(equipos.get(key).getCompañia().equals("Telcel")){
+                System.out.println(equipos.get(key));
+            }
+        }
+
+        //--------------------------------------EJERCICIO----------------------------------------------
+        System.out.println("\n==========================EJERCICIO CATALOGO======================================");
+
+        /*
+        Crear un catálogo donde se puedan consultar los datos de los autos (modelo, color, precio, año,
+         transmisión) separando por Marca y por tipo de auto (SEDAN, SUV'S, HATCHBACK, PICKUP).
+         Tener en cuenta que cada marca tiene distinta cantidad de autos y diferentes categorías.
+         */
+
+        Map<String,Map<String,List<Auto>>> catalogoGeneral = new HashMap<String,Map<String,List<Auto>>>();
+        //Mapa de Chevrolet
+        Map<String,List<Auto>> catalogoChevrolet = new HashMap<String,List<Auto>>();
+        //Lista de SUV'S de Chevrolet
+        List<Auto> lista1 = new ArrayList<Auto>();
+        //Objetos SUV'S para la lista SUV'S de Chevrolet
+        lista1.add(new Auto("Equinox","Gris",400000,2019,"AUTOMATICO",
+                "837429875439"));
+        lista1.add(new Auto("Captiva","Negros",300000,2020,"AUTOMATICO",
+                "564563454454"));
+        lista1.add(new Auto("Traverse","Rojo",350000,2021,"AUTOMATICO",
+                "345634542563"));
+        lista1.add(new Auto("Thaoe","Negro",500000,2022,"AUTOMATICO",
+                "937849274849"));
+
+        //Añade la lista al catalogo de la categoría específica
+        catalogoChevrolet.put("SUV",lista1);
+        //anadir un elemento
+        catalogoGeneral.put("Chevrolet",catalogoChevrolet);
 
     }
 }
