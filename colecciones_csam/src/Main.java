@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -152,6 +154,81 @@ public class Main {
                 index2 = citys.indexOf(c);
             }
         }
+
+        //-----------------------------------------------------------------------------------
+
+        Map<String, String> registro= new HashMap<String ,String >();
+        //Map<String, Integer> edades = new HashMap<>();
+
+        // agregar valores al mapa
+        registro.put("24386018943","Alcatel OT557 Gris Telcel Prepago 800");
+        registro.put("09234859383","Samsung Omnia Negro Movistar Pospago 1600");
+        registro.put("84983972938","Sony Ericsson W995 Naranja Unefon Prepago 2000");
+        registro.put("02984379383","Kiocera K1 Rojo Telcel Pospago 1100");
+        registro.put("02938484622","Pantech GMV-S Gris Unefon Pospago 500");
+        registro.put("90438702849","Nokia 5800 Negro Telcel Prepago 2500");
+        registro.put("94852039483","Motorola Razr Azul Movistar Prepago 1500");
+        registro.put("03894373734","LG Chocolate Negro Movistar Prepago  1600");
+
+        //tamaño del mapa
+        System.out.println(registro.size());
+
+        //obtener un elemento del mapa
+        System.out.println(registro.get("84983972938"));
+
+        //eliminar  un elemento dell mapa
+        for (String key:registro.keySet()){
+            System.out.println(registro.get(key));
+        }
+        //eliminra el elemneto del map
+        System.out.println(registro.remove("94852039483"));//recibe la llave
+        //recibe la llave y un valos asociado
+        //asi dicha  esta asociada al valor dado elimina el elemento
+        //si no mo lo elimina
+        registro.remove("02984379383","Kiocera K1 Rojo Telcel Pospago 1100");
+        System.out.println("elementos en el mapa " + registro.size());
+
+        //existe una llave
+        System.out.println(registro.containsKey("90438702849"));
+
+        //reamplazar un valor , solo si existe la llave
+        registro.replace("09234859383" , "Nokia lumina640XL Azul Unefon Pospago 40000");
+
+        String [] datos;
+
+        for (String key :registro.keySet()){
+
+           // datos=registro.get()
+           // System.out.println(Equipos.get(key));
+        }
+//        Equipos.put("834590243984", new Equipos("Samsung", "A05", "Azul", "Telcel", "Pospago", 2000));
+//        Equipos.put("012983472435", new Equipos("Motorola", "Flip", "Rojo", "Telcel", "Prepago", 500));
+//        Equipos.put("289470292832", new Equipos("LG", "G9", "Blanco", "Telcel", "Prepago", 3600));
+//        Equipos.put("092843298329", new Equipos("Sony Ericsson", "W200", "Morado", "Telcel", "Prepago", 1800));
+//        Equipos.put("987249812736", new Equipos("Nokia", "N96", "Negro", "Telcel", "Pospago", 9000));
+//        Equipos.put("219387492832", new Equipos("Huawei", "P30", "Dorado", "Telcel", "Prepago", 7000));
+
+
+        Map<String, Map<String,List<Auto>>> catalogGeneral =
+                new HashMap<String, Map<String,List<Auto>>>();
+        //Mapa de chevrolet
+        Map<String,List<Auto>>  catChevrolet = new HashMap<String,List<Auto>>();
+        //Lista de suvs de chevrolet
+        List<Auto> lista1 = new ArrayList<Auto>();
+        //Objetos SUVs para la lista suvs de chevrolet
+        lista1.add(new Auto("Equinox","Gris",400000,2019,
+                "AUTOMATICO","837429875439"));
+        lista1.add(new Auto("Captiva","Negro",300000,2020,
+                "AUTOMATICO","564563454454"));
+        lista1.add(new Auto("Traverse","Rojo",350000,2021,
+                "AUTOMATICO","345634542563"));
+        lista1.add(new Auto("Tahoe","Negro",500000,2022,
+                "AUTOMATICO","937849274849"));
+        //añade la lista al catalogo de la catgoria especifica
+        catChevrolet.put("SUV",lista1);
+        //añadir un elemento
+        catalogGeneral.put("Chevrolet",catChevrolet);
+
 
 
 
