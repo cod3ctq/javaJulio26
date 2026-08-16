@@ -6,21 +6,18 @@ public class ServicioDTO {
 
     private String convenio;
     private String referencia;
-    private String fechaInicio; //es consulta no se genera por eso string
-    private String fechaFin;
+    private Date fechaInicio; //es consulta no se genera por eso string
+    private Date fechaFin;
     private double monto;
-    private String status;
+    private char status;
 
-    public ServicioDTO(String convenio, String referencia, String fechaInicio, String fechaFin, double monto, String status) {
+    public ServicioDTO(String convenio, String referencia, Date fechaInicio, Date fechaFin, double monto, char status) {
         this.convenio = convenio;
         this.referencia = referencia;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.monto = monto;
         this.status = status;
-    }
-
-    public ServicioDTO(String referencia, Date fechaInicio, Date fechaFin, double monto, char status) {
     }
 
     public String getConvenio() {
@@ -39,19 +36,19 @@ public class ServicioDTO {
         this.referencia = referencia;
     }
 
-    public String getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public String getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(String fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -63,23 +60,23 @@ public class ServicioDTO {
         this.monto = monto;
     }
 
-    public String getStatus() {
+    public char getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(char status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
-        return "dto.ServicioDTO{" +
+        return "ServicioDTO{" +
                 "convenio='" + convenio + '\'' +
                 ", referencia='" + referencia + '\'' +
-                ", fechaInicio='" + fechaInicio + '\'' +
-                ", fechaFin='" + fechaFin + '\'' +
+                ", fechaInicio=" + fechaInicio +
+                ", fechaFin=" + fechaFin +
                 ", monto=" + monto +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

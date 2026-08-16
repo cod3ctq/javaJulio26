@@ -153,15 +153,15 @@ public class CajeroBasico extends Atm implements OperacionesBasicas {
 
         if (servicio==null){
             throw new BussinessException(Mensajes.REFERENCE_NOT_FOUND);
-        } else if (servicio.getStatus().equals("0")) {
-            throw new BussinessException(Mensajes.ALREADY_PAYED);
+//        } else if (servicio.getStatus('0')) {
+//            throw new BussinessException(Mensajes.ALREADY_PAYED);
         }else if ((cuentaDTO.getSaldo()-servicio.getMonto())<cuentaDTO.getSaldoMin()) {
             throw new BussinessException(Mensajes.MINIMUN_BALANCE);
         }else{
             //nivel de objeto (en la memoria)
 
             int indexAnterior = Atm.cachePagoServicios.get(convenio).indexOf(servicio);
-            servicio.setStatus("0");
+            servicio.setStatus('0');
             Atm.cachePagoServicios.get(convenio).set(indexAnterior,servicio);
 
             //actualizar el saldo de la cuenta cargada en el cache cuentaDTO

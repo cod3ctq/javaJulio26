@@ -37,7 +37,7 @@ public abstract class Atm {
     public static Set<RetiroSinTarjeta> cacheRetirosCobrados =
             new HashSet<RetiroSinTarjeta>();
 
-    public static List<ServicioDTO> pagoDTO;
+//    public static List<ServicioDTO> pagoDTO;
     public static Map<String,List<ServicioDTO>> cachePagoServicios =
             new HashMap<String, List<ServicioDTO>>();
 
@@ -54,17 +54,18 @@ public abstract class Atm {
     public Atm (){
         cuentas = cuentaDAO.cargarCuentas();
         cacheRST = generarRetirosSinTarjeta();
-        pagoDTO = pagoDAO.cargarServicios();
+//        pagoDTO = pagoDAO.cargarServicios();
+        cachePagoServicios = pagoDAO.cachePagoServicios();
 
     }
 
-    public static List<ServicioDTO> getPagoDTO() {
-        return pagoDTO;
-    }
-
-    public static void setPagoDTO(List<ServicioDTO> pagoDTO) {
-        Atm.pagoDTO = pagoDTO;
-    }
+//    public static List<ServicioDTO> getPagoDTO() {
+//        return pagoDTO;
+//    }
+//
+//    public static void setPagoDTO(List<ServicioDTO> pagoDTO) {
+//        Atm.pagoDTO = pagoDTO;
+//    }
 
     public static Map<String, List<ServicioDTO>> getCachePagoServicios() {
         return cachePagoServicios;
@@ -239,8 +240,10 @@ public abstract class Atm {
 
 
     public static void imprimirServicios(){
-        for (ServicioDTO servicio : pagoDTO){
-            System.out.println(servicio);
+        for (String key : cachePagoServicios.keySet()){
+            for (ServicioDTO t : cachePagoServicios.get(key)){
+                System.out.println(t);
+            }
         }
     }
 

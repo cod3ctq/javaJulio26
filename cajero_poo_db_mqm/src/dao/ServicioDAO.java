@@ -17,34 +17,34 @@ public class ServicioDAO {
     PreparedStatement ps;
     ResultSet rs;
 
-    public List<ServicioDTO> cargarServicios() {
-
-        String query = "SELECT * FROM WV_SERVICIOS_RECIBOS";
-        ServicioDTO servicio = null;
-        List<ServicioDTO> servicios = new ArrayList<ServicioDTO>();
-
-        try {
-            con = ConexionOracle.getInstance().getCon();
-            System.out.println("////cargarservicios////" + con);
-            ps = con.prepareStatement(query);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                servicio = new ServicioDTO(rs.getString("CONVENIO"),
-                        rs.getString("REFERENCIA"),
-                        rs.getString("FECHA_INICIO"),
-                        rs.getString("FECHA_FIN"),
-                        rs.getDouble("MONTO"),
-                        rs.getString("STATUS"));
-                servicios.add(servicio);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return servicios;
-    }
+//    public List<ServicioDTO> cargarServicios() {
+//
+//        String query = "SELECT * FROM WV_SERVICIOS_RECIBOS";
+//        ServicioDTO servicio = null;
+//        List<ServicioDTO> servicios = new ArrayList<ServicioDTO>();
+//
+//        try {
+//            con = ConexionOracle.getInstance().getCon();
+//            System.out.println("////cargarservicios////" + con);
+//            ps = con.prepareStatement(query);
+//            rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                servicio = new ServicioDTO(rs.getString("CONVENIO"),
+//                        rs.getString("REFERENCIA"),
+//                        rs.getDate("FECHA_INICIO"),
+//                        rs.getDate("FECHA_FIN"),
+//                        rs.getDouble("MONTO"),
+//                        rs.getString("STATUS").charAt(0));
+//                servicios.add(servicio);
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return servicios;
+//    }
 
     public void actualizarMonto(String referencia) {
         String query = "UPDATE RECIBOS SET STATUS = '0' WHERE REFERENCIA = ?";
@@ -74,7 +74,8 @@ public class ServicioDAO {
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
             while(rs.next()){
-                recibo = new ServicioDTO(rs.getString("REFERENCIA"),
+                recibo = new ServicioDTO(rs.getString("CONVENIO"),
+                        rs.getString("REFERENCIA"),
                         rs.getDate("FECHA_INICIO"),
                         rs.getDate("FECHA_FIN"),
                         rs.getDouble("MONTO"),
