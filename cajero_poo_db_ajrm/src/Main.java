@@ -19,7 +19,6 @@ public class Main {
         //a1.cargarCuentas();
         //a1.imprimirCuentas();
         //a1.consultarSaldo("5578123412340007");
-
         CajeroBasico cb = new CajeroBasico();
         PractiCaja pc = new PractiCaja();
         cb.setUbicacion("Avenida Torres #29");
