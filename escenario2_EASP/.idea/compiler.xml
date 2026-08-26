@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="discovery-server" />
+        <module name="ms-tarjetas" />
+        <module name="ms-catalogos" />
+        <module name="api-gateway" />
+        <module name="ms-transacciones" />
+        <module name="ms-cuentas" />
+        <module name="ms-prestamos" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="discovery-server" options="-parameters" />
+      <module name="ms-catalogos" options="-parameters" />
+      <module name="ms-cuentas" options="-parameters" />
+      <module name="ms-prestamos" options="-parameters" />
+      <module name="ms-tarjetas" options="-parameters" />
+      <module name="ms-transacciones" options="-parameters" />
+    </option>
+  </component>
+</project>
