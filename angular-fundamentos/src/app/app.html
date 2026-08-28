@@ -1,0 +1,17 @@
+<h1> Sistema Clientes </h1>
+<button (click)="cargarClientes()">Cargar Clientes</button>
+<p> Total Clientes: {{ totalClientes }}</p>
+<p> Primer Cliente: {{ clientes[0]?.nombre }}</p>
+<hr>
+<h2> Listado clientes </h2>
+<app-cliente-formulario 
+  (guardar)="guardarCliente($event)"
+  (actualizar)="actualizarCliente($event)"
+  [reiniciarFormulario]="reiniciarFormulario">
+</app-cliente-formulario>   
+<div>
+  <app-cliente-lista 
+  [clientes]="clientes"
+  (eliminar)="eliminarCliente($event)">  
+  </app-cliente-lista>
+</div>

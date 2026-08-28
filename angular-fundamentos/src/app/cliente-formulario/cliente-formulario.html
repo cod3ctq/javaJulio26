@@ -1,0 +1,55 @@
+<h2>Formulario de Cliente</h2>
+@if(modoEdicion) {
+<label>Nombre</label><br>
+<input type="text" [(ngModel)]="clienteEditado.nombre"><br>
+<label>Apellido Paterno</label><br>
+<input type="text" [(ngModel)]="clienteEditado.apP"><br>
+<label>Apellido Materno</label><br>
+<input type="text" [(ngModel)]="clienteEditado.apM"><br>
+<label>Direccion</label><br>
+<input type="text" [(ngModel)]="clienteEditado.direccion"><br>
+<label>Telefono</label><br>
+<input type="text" [(ngModel)]="clienteEditado.telefono"><br>
+<label>Correo</label><br>
+<input type="text" [(ngModel)]="clienteEditado.correo"><br>
+<button (click)="actualizar.emit(clienteEditado)">
+  Actualizar Cliente
+</button>
+<button (click)="cargarClienteSeleccionado()">
+  Ver Cliente Seleccionado
+</button>
+} @else {
+<label>Nombre</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.nombre"><br>
+<label>Apellido Paterno</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.apP"><br>
+<label>Apellido Materno</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.apM"><br>
+<label>Direccion</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.direccion"><br>
+<label>Telefono</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.telefono"><br>
+<label>Correo</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.correo"><br>
+<label>INE</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.ine"><br>
+<label>RFC</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.rfc"><br>
+<label>Fecha de Nacimiento</label><br>
+<input type="text" [(ngModel)]="nuevoCliente.fechaNac"><br>
+<button (click)="guardar.emit(nuevoCliente)">
+  Guardar Cliente
+</button>
+<div>
+  <label>{{  nuevoCliente.nombre }}</label>
+  <label>{{  nuevoCliente.apP }}</label>
+  <label>{{  nuevoCliente.apM }}</label>
+  <label>{{  nuevoCliente.direccion }}</label>
+  <label>{{  nuevoCliente.telefono }}</label>
+  <label>{{  nuevoCliente.correo }}</label>
+  <label>{{  nuevoCliente.ine }}</label>
+  <label>{{  nuevoCliente.rfc }}</label>
+  <label>{{  nuevoCliente.fechaNac }}</label>
+</div>
+}
+
