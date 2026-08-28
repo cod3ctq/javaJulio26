@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <td>Nombre</td>
+    <td>Apellido Paterno</td>
+    <td>Apellido Materno</td>
+    <td>Direccion</td>
+    <td>Telefono</td>
+    <td>Correo</td>
+    <td>Acciones</td>
+  </tr>
+
+  @for (cliente of clientes; track cliente.clienteId){
+    <tr>
+      <td>{{cliente.nombre}}</td>
+      <td>{{cliente.apP}}</td>
+      <td>{{cliente.apM}}</td>
+      <td>{{cliente.direccion}}</td>
+      <td>{{cliente.tel}}</td>
+      <td>{{cliente.correo}}</td>
+
+      <td>
+        <button (click)="editarCliente(cliente)">
+          Editar
+        </button>
+
+        <button (click)="eliminar.emit(cliente)">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  }
+</table>
